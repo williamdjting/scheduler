@@ -192,3 +192,20 @@ storiesOf("Appointment", module)
       onClose={action("onClose")}
     />
   ))
+  .add("Edit", () => (
+    <Edit
+      name=" "
+      interviewers={interviewers}
+      interviewer={2}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+  ))
+  .add("Create", () => (
+    <Create
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+  ))
+  
