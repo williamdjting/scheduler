@@ -35,6 +35,8 @@ import Status from "components/Appointment/Status"
 
 import Error from "components/Appointment/Error"
 
+import Form from "components/Appointment/Form"
+
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -192,20 +194,38 @@ storiesOf("Appointment", module)
       onClose={action("onClose")}
     />
   ))
-  .add("Edit", () => (
-    <Edit
-      name=" "
-      interviewers={interviewers}
-      interviewer={2}
-      onSave={action("onSave")}
-      onCancel={action("onCancel")}
-    />
-  ))
   .add("Create", () => (
-    <Create
+    <Form
       interviewers={interviewers}
       onSave={action("onSave")}
       onCancel={action("onCancel")}
     />
   ))
+  .add("Edit", () => (
+    <Form
+      name="Archie Cohen"
+      interviewers={interviewers}
+      // interviewer={interviewers[0].id}
+      interviewer={interviewer.id}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+  ))
+
+  // .add("Edit", () => (
+  //   <Edit
+  //     name=" "
+  //     interviewers={interviewers}
+  //     interviewer={2}
+  //     onSave={action("onSave")}
+  //     onCancel={action("onCancel")}
+  //   />
+  // ))
+  // .add("Create", () => (
+  //   <Create
+  //     interviewers={interviewers}
+  //     onSave={action("onSave")}
+  //     onCancel={action("onCancel")}
+  //   />
+  // ))
   
