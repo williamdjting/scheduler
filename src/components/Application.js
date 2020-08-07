@@ -5,6 +5,8 @@ import "components/Application.scss";
 
 import { getAppointmentsForDay } from "helpers/selectors";
 
+import { getInterview } from "helpers/selectors";
+
 import DayList from "components/DayList";
 
 import Appointment from "components/Appointment/index.js"
@@ -83,27 +85,29 @@ export default function Application(props) {
     Promise.all([
       Promise.resolve(axios.get('/api/days')),
       Promise.resolve(axios.get('/api/appointments')),
+      Promise.resolve(axios.get('/api/interviewers')),
     ])
 
       .then((all) => {
-        console.log(all);
-        setState(prev => ({...prev, days: all[0].data, appointments: all[1].data}));
+        // console.log(all);
+        console.log(state.interviewers);
+        setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
     })
   }, [])
 
-  const appointmentObjects = getAppointmentsForDay(state, state.day)
+  // const appointmentObjects = getAppointmentsForDay(state, state.day)
+  const appointmentObjects = getAppointmentsForDay(state, state.day);
 
-
-  const schedule = appointmentObjects.map((appointmentObjects) => {
+  const schedule = appointmentObjects.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
     return (
-      // <Appointment
-      // key={appointment.id}
-      // id={appointment.id}
-      // interviewers={interviewers}
-      // time={appointment.time}
-      // interview={appointment.interview}
-      // />
-      <Appointment key={appointmentObjects.id} {...appointmentObjects} />
+      <Appointment
+      key={appointment.id}
+      id={appointment.id}
+      time={appointment.time}
+      interview={interview}
+    />
+      //<Appointment key={appointmentObjects.id} {...appointmentObjects} />
     );
   });
 

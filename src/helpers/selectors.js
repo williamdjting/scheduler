@@ -16,6 +16,26 @@ export function getAppointmentsForDay(state, day) {
   return filteredAppointments
 };
 
+export function getInterview(state, interview) {
+  // The function should return a new object containing the interview data when we 
+  // pass it an object that contains the interviewer. Otherwise, the function should 
+  // return null. 
+
+  const interviewData = {};
+
+  if (!interview) {
+    return null
+  }
+  const interviewerID = interview.interviewer;
+  for (const interviewer in state.interviewers) {
+    if (state.interviewers[interviewer].id === interviewerID) {
+      interviewData['student'] = interview.student;
+      interviewData['interviewer'] = state.interviewers[interviewer];
+    }
+  }
+  return interviewData
+}
+
 // export function getAppointmentsForDay(state, day) {
 //   for (let i in state.days) {
 //     if (state.days[i].name === day) {
