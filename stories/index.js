@@ -170,8 +170,10 @@ storiesOf("Appointment", module)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
   .add("Show", () => (
     <Show
-      student="Lydia Miller-Jones"
-      interviewer={interviewer}
+      // student="Lydia Miller-Jones"
+      // interviewer={interviewer}
+      student={interview.student}
+      interviewer={interview.interviewer}
       onEdit={action("onEdit")}
       onDelete={action("onDelete")}
     />
@@ -213,12 +215,12 @@ storiesOf("Appointment", module)
   ))
   .add("Appointment Empty", () => (
     <Fragment>
-      <Appointment 
-      id={1} 
-      time="12pm" />
-      <Appointment 
-      id="last" 
-      time="1pm" />
+      <Appointment
+        id={1}
+        time="12pm" />
+      <Appointment
+        id="last"
+        time="1pm" />
     </Fragment>
   ))
   .add("Appointment Booked", () => (

@@ -36,25 +36,4 @@ export function getInterview(state, interview) {
   return interviewData
 }
 
-// export function getAppointmentsForDay(state, day) {
-//   for (let i in state.days) {
-//     if (state.days[i].name === day) {
-//       const findObj = state.days[i].filter(stateDay => state.appointments.id === stateDay.id) 
-//       return findObj
-//     }
-//   }
-//   // const findObj = state.days.filter(stateDay => stateDay.name === day);
-//   // return findObj
-
-// }
-
-
-
-
-// function selectUserByName(state, name) {
-//   const filteredNames = state.users.filter(user => user.name === name);
-//   return filteredNames;
-// }
-
-
 
