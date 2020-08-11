@@ -16,6 +16,7 @@ import Form from "components/Appointment/Form.js"
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
   //const { interview } = props;
@@ -29,6 +30,8 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
+    transition(SAVING)
+
     props.bookInterview(props.id, interview)
       .then((err, res) => {
         transition(SHOW)
@@ -43,6 +46,7 @@ export default function Appointment(props) {
     <main>
       <header>{props.time}</header>
       <article className="appointment">Appointment</article>
+      {mode === SAVING && 'Saving?'}
       {mode === EMPTY && <Empty onAdd={event => transition(CREATE)} />}
       {mode === SHOW && props.interview && (
         <Show

@@ -96,10 +96,18 @@ export default function Application(props) {
       ...state,
       appointments
     });
+    return (axios.put(`/api/appointments/${id}`, 
+        {interview})
+        
+          .then((response) => {
+            console.log(response)
+          })
+    )
+  }
 
-    //Within bookInterview, make a PUT request to the /api/appointments/:id endpoint to update the database with the appointment data.
-    // useEffect(() => {
-    //     Promise.resolve(axios.put('/api/appointments/:id')),
+    // Within bookInterview, make a PUT request to the /api/appointments/:id endpoint to update the database with the appointment data.
+  
+        
 
 
   
@@ -110,7 +118,7 @@ export default function Application(props) {
     //   })
     // }, [])
 
-  }
+  
 
 
 
