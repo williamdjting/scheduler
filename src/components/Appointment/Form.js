@@ -7,13 +7,13 @@ export default function Form(props) {
   const [error, setError] = React.useState("");
   const reset = () => {setName(""); setInterviewer(null);};
   const cancel = () => {props.onCancel(reset())};
-  const validate = () => {
+  const validate = (name, interviewer) => {
     if (name === "") {
       setError("Please enter your name");
       return;
     } else {
       setError("");
-      props.onSave(name, interviewer)
+      props.onSave(name, interviewer);
     }
   }
   return (

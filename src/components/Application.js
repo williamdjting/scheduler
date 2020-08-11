@@ -84,6 +84,32 @@ export default function Application(props) {
 
   const bookInterview = function(id, interview) {
     console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    setState({
+      ...state,
+      appointments
+    });
+
+    //Within bookInterview, make a PUT request to the /api/appointments/:id endpoint to update the database with the appointment data.
+    // useEffect(() => {
+    //     Promise.resolve(axios.put('/api/appointments/:id')),
+
+
+  
+    //     .then((all) => {
+    //       // console.log(all);
+    //       //console.log(state.interviewers);
+    //       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
+    //   })
+    // }, [])
+
   }
 
 

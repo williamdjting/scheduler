@@ -24,11 +24,15 @@ export default function Appointment(props) {
   // }
 
   const save = function(name, interviewer) {
+    //Implementing the Update
     const interview = {
       student: name,
       interviewer
     };
     props.bookInterview(props.id, interview)
+      .then((err, res) => {
+        transition(SHOW)
+      })
   }
 
   const { mode, transition, back } = useVisualMode(
