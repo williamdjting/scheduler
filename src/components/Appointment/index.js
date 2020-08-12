@@ -65,6 +65,16 @@ export default function Appointment(props) {
   );
   console.log("props in index.js", props)
   console.log("mode", mode)
+
+  useEffect(() => {
+    if (props.interview === null && mode === SHOW) {
+      transition(EMPTY);
+     }
+    if (props.interview && mode === EMPTY) {
+     transition(SHOW);
+    }
+   }, [props.interview, transition, mode]);
+
  
 
  
