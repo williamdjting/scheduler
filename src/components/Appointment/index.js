@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useState, useEffect } from 'react';
 
 import "components/Appointment/styles.scss";
 
@@ -41,7 +41,7 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    transition(SAVING);
+    transition(SAVING, true);
 
     props
       .bookInterview(props.id, interview)
@@ -59,11 +59,15 @@ export default function Appointment(props) {
       // .catch(error => transition(ERROR_SAVE, true));
       .catch(error => transition(ERROR_DELETE, true));
   };
-
+  
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+  console.log("props in index.js", props)
+  console.log("mode", mode)
+ 
 
+ 
   return (
     <main>
       <Header time={props.time} />

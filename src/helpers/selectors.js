@@ -21,18 +21,23 @@ export function getInterview(state, interview) {
   // pass it an object that contains the interviewer. Otherwise, the function should 
   // return null. 
 
-  const interviewData = {};
+  
 
   if (!interview) {
     return null
   }
+  const interviewData = {};
+  interviewData['student'] = interview.student;
+  interviewData['interviewer'] = {};
   const interviewerID = interview.interviewer;
   for (const interviewer in state.interviewers) {
+    // debugger
     if (state.interviewers[interviewer].id === interviewerID) {
-      interviewData['student'] = interview.student;
+      
       interviewData['interviewer'] = state.interviewers[interviewer];
     }
   }
+  // debugger
   return interviewData
 }
 
