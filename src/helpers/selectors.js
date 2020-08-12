@@ -21,7 +21,6 @@ export function getInterview(state, interview) {
   // pass it an object that contains the interviewer. Otherwise, the function should 
   // return null. 
 
-  
 
   if (!interview) {
     return null
