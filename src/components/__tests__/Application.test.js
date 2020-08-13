@@ -105,7 +105,7 @@ describe("Application", () => {
   fireEvent.click(getByAltText(appointment, "Edit"))
 
   // Change name and interviewer
-  fireEvent.change(getByPlaceholderText(appointment, /Enter Student Name/i), {
+  fireEvent.change(getByPlaceholderText(appointment, "Enter Student Name"), {
     target: { value: "Bob the Builder" }
   });
   fireEvent.click(getByAltText(appointment, "Tori Malcolm"));
@@ -134,15 +134,15 @@ describe("Application", () => {
     // Returns an array of items matching testID
     const appointment = getAllByTestId(container, "appointment")[0];
     fireEvent.click(getByAltText(appointment, "Add"))
-    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+    fireEvent.change(getByPlaceholderText(appointment, "Enter Student Name"), {
       target: { value: "Lydia Miller-Jones" }
     });
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
 
     fireEvent.click(getByText(appointment, "Save"));
     // Check that the put fails within Axios
-    await waitForElement(() => getByText(appointment, /There was an error while saving!/i))
-    expect(getByText(appointment, /There was an error while saving!/i)).toBeInTheDocument();
+    await waitForElement(() => getByText(appointment, "There was an error during the Saving"))
+    expect(getByText(appointment, "There was an error during the Saving")).toBeInTheDocument();
   });
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
@@ -170,8 +170,8 @@ describe("Application", () => {
     // Check that the put fails within Axios
 
 
-    await waitForElement(() => getByText(appointment, /There was an error while saving!/i))
-    expect(getByText(appointment, /There was an error while saving!/i)).toBeInTheDocument();
+    await waitForElement(() => getByText(appointment, "There was an error during the Saving"))
+    expect(getByText(appointment, "There was an error during the Saving")).toBeInTheDocument();
 });
 
 });
