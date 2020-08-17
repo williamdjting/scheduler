@@ -1,7 +1,5 @@
 import React from "react";
 
-// let classNames = require('classnames');
-
 export default function Status(props) {
 
   return (

@@ -1,6 +1,5 @@
 import React from "react";
 
-// let classNames = require('classnames');
 
 import Button from "components/Button";
 

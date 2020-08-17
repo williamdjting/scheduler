@@ -30,13 +30,8 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
-  //const { interview } = props;
-  // if (props.interview) {
-  //   return (
-  // }
 
   const save = function (name, interviewer) {
-    //Implementing the Update
     const interview = {
       student: name,
       interviewer,
@@ -51,12 +46,10 @@ export default function Appointment(props) {
 
   const cancel = function () {
     console.log("cancel", cancel);
-    //transition(DELETING)
     transition(DELETING, true);
     props
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
-      // .catch(error => transition(ERROR_SAVE, true));
       .catch(error => transition(ERROR_DELETE, true));
   };
   
@@ -128,10 +121,6 @@ export default function Appointment(props) {
           onClose={(event) => back()}
         />
       )}
-
-      {/* {props.interview ? <Show student={interview.student} interviewer={[interview.interviewer]} />  : <Empty />} */}
     </main>
-    // console.log(props.student)
-    // console.log(props.interviewer)
   );
 }

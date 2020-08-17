@@ -11,15 +11,6 @@ export default function Button(props) {
    "button--danger": props.danger
    });
  
-   // if (props.confirm) {
-   //   buttonClass += " button--confirm";
-   // }
- 
-   // if (props.danger) {
-   //   buttonClass += " button--danger";
-   // }
- 
-   
    return (
      <button
        className={buttonClass}
@@ -31,10 +22,3 @@ export default function Button(props) {
    );
  }
 
-// function Application(props) {
-//    return (
-//       <main>
-//          <Button>Default</Button>
-//       </main>
-//    );
-// }

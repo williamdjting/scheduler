@@ -4,7 +4,7 @@ import React from "react";
 
 export default function DayList(props) {
   const days = props.days;
-  const newDayListItems = days.map((day) => //an array of react components
+  const newDayListItems = days.map((day) => 
     <DayListItem key={day.id}
       name={day.name}
       spots={day.spots}
@@ -12,7 +12,7 @@ export default function DayList(props) {
       setDay={props.setDay} />
 
   );
-  return ( //outputting the new array generated thru map to storybook as new UI
+  return ( 
     <ul>
       {newDayListItems}
     </ul>

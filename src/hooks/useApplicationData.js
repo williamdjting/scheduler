@@ -55,9 +55,7 @@ export default function useApplicationData() {
     )
   }
 
-
   const setDay = day => setState({ ...state, day });
-
 
   useEffect(() => {
     Promise.all([

@@ -53,15 +53,15 @@ storiesOf("Button", module)
     </Button>
   ));
 
-storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
+storiesOf("DayListItem", module) 
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  }) // Provides the default background color for our component
-  .add("Unselected", () => <DayListItem name="Monday" spots={5} />) // To define our stories, we call add() once for each of our test states to generate a story
+  }) 
+  .add("Unselected", () => <DayListItem name="Monday" spots={5} />)  
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />)
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> /
   ));
 
 const days = [
@@ -158,7 +158,6 @@ storiesOf("InterviewerList", module)
   ));
 
 
-//index.js under src/components/Appointment
 
 storiesOf("Appointment", module)
   .addParameters({
@@ -170,8 +169,6 @@ storiesOf("Appointment", module)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
   .add("Show", () => (
     <Show
-      // student="Lydia Miller-Jones"
-      // interviewer={interviewer}
       student={interview.student}
       interviewer={interview.interviewer}
       onEdit={action("onEdit")}
@@ -207,7 +204,6 @@ storiesOf("Appointment", module)
     <Form
       name="Archie Cohen"
       interviewers={interviewers}
-      // interviewer={interviewers[0].id}
       interviewer={interviewer.id}
       onSave={action("onSave")}
       onCancel={action("onCancel")}

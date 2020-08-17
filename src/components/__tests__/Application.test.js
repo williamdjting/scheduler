@@ -11,11 +11,6 @@ import getAllByTestId from "@testing-library/react";
 
 afterEach(cleanup);
 
-// xit("renders without crashing", () => {
-//   render(<Application />);
-// });
-// prettyDOM(container);
-// console.log(prettyDOM(container));
 
 describe("Application", () => {
   it("defaults to Monday and changes the schedule when a new day is selected", () => {
