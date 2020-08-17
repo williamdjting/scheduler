@@ -21,3 +21,8 @@ npm test
 ```sh
 npm run storybook
 ```
+Screenshots
+!["Homepage"](https://github.com/williamdjting/scheduler/blob/master/docs/Screen%20Shot%202020-08-17%20at%2012.19.31%20AM.png?raw=true)
+!["Add Appointment"](https://github.com/williamdjting/scheduler/blob/master/docs/Screen%20Shot%202020-08-17%20at%2012.19.50%20AM.png?raw=true)
+!["Added Appointment"](https://github.com/williamdjting/scheduler/blob/master/docs/Screen%20Shot%202020-08-17%20at%2012.19.16%20AM.png?raw=true)
+
