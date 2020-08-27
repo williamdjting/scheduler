@@ -78,7 +78,7 @@ export default function Appointment(props) {
       {mode === CONFIRM && (
         <Confirm
           message="Please confirm you would like to delete"
-          onConfirm={(event) => transition(DELETING)}
+          onConfirm={cancel}
           onCancel={(event) => back()}
         />
       )}
@@ -89,7 +89,7 @@ export default function Appointment(props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={cancel}
+          onDelete={(event) => transition(CONFIRM)}
           onEdit={(event) => transition(EDIT)}
         />
       )}
@@ -104,7 +104,7 @@ export default function Appointment(props) {
         <Form
           name={props.interview.student}
           interviewers={props.interviewers}
-          interviewer={props.interview.interviewer}
+          interviewer={props.interview.interviewer.id}
           onSave={save}
           onCancel={(event) => back()}
         />
@@ -112,13 +112,13 @@ export default function Appointment(props) {
       {mode === ERROR_SAVE && (
         <Error
           message={"There was an error during the Saving"}
-          onClose={(event) => back()}
+          onClose={(event) => transition(SHOW)}
         />
       )}
       {mode === ERROR_DELETE && (
         <Error
           message={"There was an error during the Deleting"}
-          onClose={(event) => back()}
+          onClose={(event) => transition(SHOW)}
         />
       )}
     </main>

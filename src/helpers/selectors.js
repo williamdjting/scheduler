@@ -7,11 +7,9 @@ export function getAppointmentsForDay(state, day) {
   for (const appointment in state.appointments) {
 
 
-    if (filteredDays[0]) {
-      if (filteredDays[0].appointments.includes(state.appointments[appointment].id)) {
+    if (filteredDays[0] && filteredDays[0].appointments.includes(state.appointments[appointment].id)) {
         filteredAppointments.push(state.appointments[appointment])
       }
-    }
   }
   return filteredAppointments
 };
