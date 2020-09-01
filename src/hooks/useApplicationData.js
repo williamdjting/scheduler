@@ -39,7 +39,7 @@ export default function useApplicationData() {
               ...state,
               appointments,
               days
-            // });
+            });
             // console.log(response)
           })
     )
