@@ -33,6 +33,6 @@ export default function InterviewerList(props) {
 
 InterviewerList.propTypes = {
   value: PropTypes.number,
-  setInterviewer: PropTypes.number,
-  onChange: PropTypes.func.isRequired
+  setInterviewer: PropTypes.func,
+  onChange: PropTypes.func
 };

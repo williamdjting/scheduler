@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 export default function useApplicationData() {
+  
 
   const [state, setState] = useState({
     day: "Monday",
@@ -12,7 +13,15 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
+  const finder = function(day) {
+    const dayIndex = state.days.findIndex(day => day.name === state.day)
+    return dayIndex
+  }
+
+
   const cancelInterview = function(id) {
+    const dayIndex = finder();
+    const days = [...state.days];
     const appointment = {
       ...state.appointments[id],
       interview: null
@@ -21,19 +30,24 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    setState({
-      ...state,
-      appointments
-    });
+    days[dayIndex].spots+=1;
+
+    
     return (axios.delete(`/api/appointments/${id}`)
           .then((response) => {
-            console.log(response)
+            setState({
+              ...state,
+              appointments,
+              days
+            // });
+            // console.log(response)
           })
     )
   }
 
   const bookInterview = function(id, interview) {
-    console.log(id, interview);
+    const dayIndex = finder();
+    const days = [...state.days];
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -42,16 +56,21 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    setState({
-      ...state,
-      appointments
-    });
+    days[dayIndex].spots-=1;
+
+    
     return (axios.put(`/api/appointments/${id}`, 
         {interview})
         
           .then((response) => {
-            console.log(response)
+            // console.log(response)
+            setState({
+              ...state,
+              appointments, 
+              days
+            });
           })
+          
     )
   }
 
@@ -59,13 +78,13 @@ export default function useApplicationData() {
 
   useEffect(() => {
     Promise.all([
-      Promise.resolve(axios.get('/api/days')),
-      Promise.resolve(axios.get('/api/appointments')),
-      Promise.resolve(axios.get('/api/interviewers')),
+      (axios.get('/api/days')),
+      (axios.get('/api/appointments')),
+      (axios.get('/api/interviewers')),
     ])
 
       .then((all) => {
-        console.log('all', all)
+        // console.log('all', all)
         setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
     })
   }, [])
