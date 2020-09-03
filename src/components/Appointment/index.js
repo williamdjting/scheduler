@@ -85,7 +85,7 @@ export default function Appointment(props) {
 
   useEffect(() => {
     if (props.interview === null && mode === SHOW) {
-      transition(EMPTY);
+      transition(CREATE);
      }
     if (props.interview && mode === EMPTY) {
      transition(SHOW);
@@ -109,6 +109,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message="Deleting" />}
       {mode === SAVING && <Status message="Saving" />}
       {mode === EMPTY && <Empty onAdd={(event) => transition(CREATE)} />}
+
       {mode === SHOW && props.interview && (
         <Show
           student={props.interview.student}
@@ -136,13 +137,14 @@ export default function Appointment(props) {
       {mode === ERROR_SAVE && (
         <Error
           message={"There was an error during the Saving"}
-          onClose={(event) => transition(SHOW)}
+          onClose={() => transition(SHOW)}
+
         />
       )}
       {mode === ERROR_DELETE && (
         <Error
           message={"There was an error during the Deleting"}
-          onClose={(event) => transition(SHOW)}
+          onClose={() => transition(SHOW)}
         />
       )}
     </main>
