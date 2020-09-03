@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 export default function useApplicationData() {
-  
+
 
   const [state, setState] = useState({
     day: "Monday",
@@ -32,7 +32,7 @@ export default function useApplicationData() {
     };
     days[dayIndex].spots+=1;
 
-    
+
     return (axios.delete(`/api/appointments/${id}`)
           .then((response) => {
             setState({
@@ -58,19 +58,49 @@ export default function useApplicationData() {
     };
     days[dayIndex].spots-=1;
 
-    
-    return (axios.put(`/api/appointments/${id}`, 
+
+    return (axios.put(`/api/appointments/${id}`,
         {interview})
-        
+
           .then((response) => {
             // console.log(response)
             setState({
               ...state,
-              appointments, 
+              appointments,
               days
             });
           })
-          
+
+    )
+  }
+
+
+  const editInterview = function(id, interview) {
+    // const dayIndex = finder();
+    // const days = [...state.days];
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    // days[dayIndex].spots-=1;
+
+
+    return (axios.put(`/api/appointments/${id}`,
+        {interview})
+
+          .then((response) => {
+            // console.log(response)
+            setState({
+              ...state,
+              appointments
+              // days
+            });
+          })
+
     )
   }
 
@@ -93,7 +123,8 @@ export default function useApplicationData() {
     state,
     setDay,
     bookInterview,
-    cancelInterview
+    cancelInterview,
+    editInterview
   }
-  
+
 }

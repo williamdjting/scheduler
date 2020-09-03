@@ -49,6 +49,25 @@ export default function Appointment(props) {
       }).catch(error => transition(ERROR_SAVE, true));
   };
 
+  const edit = function (name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer,
+    };
+    // const [day, setDay] = useState();
+    transition(SAVING, true);
+
+    props
+      .editInterview(props.id, interview)
+      .then(() => {
+        // let modifiedDay = day;
+        // modifiedDay.spots = modifiedDay.spots--;
+        // setDay(modifiedDay);
+        return transition(SHOW);
+      }).catch(error => transition(ERROR_SAVE, true));
+  };
+
+
   const cancel = function () {
     // console.log("cancel", cancel);
     transition(DELETING, true);
@@ -57,7 +76,7 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch(error => transition(ERROR_DELETE, true));
   };
-  
+
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -73,9 +92,9 @@ export default function Appointment(props) {
     }
    }, [props.interview, transition, mode]);
 
- 
 
- 
+
+
   return (
     <main>
       <Header time={props.time} />
@@ -110,7 +129,7 @@ export default function Appointment(props) {
           name={props.interview.student}
           interviewers={props.interviewers}
           interviewer={props.interview.interviewer.id}
-          onSave={save}
+          onSave={edit}
           onCancel={(event) => back()}
         />
       )}
