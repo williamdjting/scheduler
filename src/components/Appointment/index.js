@@ -2,8 +2,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 
 import "components/Appointment/styles.scss";
 
-// let classNames = require('classnames');
-
 import Header from "components/Appointment/Header";
 
 import Show from "components/Appointment/Show";
@@ -35,16 +33,12 @@ export default function Appointment(props) {
     const interview = {
       student: name,
       interviewer,
-    };
-    // const [day, setDay] = useState();
+
     transition(SAVING, true);
 
     props
       .bookInterview(props.id, interview)
       .then(() => {
-        // let modifiedDay = day;
-        // modifiedDay.spots = modifiedDay.spots--;
-        // setDay(modifiedDay);
         return transition(SHOW);
       }).catch(error => transition(ERROR_SAVE, true));
   };
@@ -54,22 +48,19 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    // const [day, setDay] = useState();
+
     transition(SAVING, true);
 
     props
       .editInterview(props.id, interview)
       .then(() => {
-        // let modifiedDay = day;
-        // modifiedDay.spots = modifiedDay.spots--;
-        // setDay(modifiedDay);
+
         return transition(SHOW);
       }).catch(error => transition(ERROR_SAVE, true));
   };
 
 
   const cancel = function () {
-    // console.log("cancel", cancel);
     transition(DELETING, true);
     props
       .cancelInterview(props.id)
@@ -80,19 +71,6 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-  // console.log("props in index.js", props)
-  // console.log("mode", mode)
-
-  useEffect(() => {
-    if (props.interview === null && mode === SHOW) {
-      transition(CREATE);
-     }
-    if (props.interview && mode === EMPTY) {
-     transition(SHOW);
-    }
-   }, [props.interview, transition, mode]);
-
-
 
 
   return (
@@ -137,7 +115,7 @@ export default function Appointment(props) {
       {mode === ERROR_SAVE && (
         <Error
           message={"There was an error during the Saving"}
-          onClose={() => transition(SHOW)}
+          onClose={() => back()}
 
         />
       )}

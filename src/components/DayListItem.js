@@ -4,7 +4,6 @@ import "components/DayListItem.scss";
 let classNames = require('classnames');
 
 export default function DayListItem(props) {
-  // console.log('This is DayListItem props', props)
   const formatSpots = (count) => {
     if (count <= 0) {
       return 'No spots left.'

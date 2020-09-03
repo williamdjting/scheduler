@@ -7,12 +7,13 @@ export default function Form(props) {
     props.interviewer || null
   );
   const [error, setError] = React.useState("");
-  const reset = () => {
-    setName("");
-    setInterviewer(null);
-  };
+  // const reset = () => {
+  //   setName("");
+  //   setInterviewer(null);
+  // };
   const cancel = () => {
-    props.onCancel(reset());
+    console.log("cancel form", props)
+    props.onCancel();
   };
   const validate = () => {
     if (!name) {

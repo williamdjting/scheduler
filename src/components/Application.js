@@ -39,7 +39,6 @@ export default function Application(props) {
       key={appointment.id}
       id={appointment.id}
       time={appointment.time}
-      // day={state.day}
       interview={interview}
       interviewers={interviewers}
       bookInterview={bookInterview}
@@ -64,7 +63,6 @@ export default function Application(props) {
             days={state.days}
             day={state.day}
             setDay={setDay}
-          // setDays={setDays}
           />
         </nav>
         <img
@@ -74,7 +72,6 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Schedule" activity. */}
         {schedule}
       </section>
     </main>

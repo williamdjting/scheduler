@@ -40,7 +40,6 @@ export default function useApplicationData() {
               appointments,
               days
             });
-            // console.log(response)
           })
     )
   }
@@ -63,7 +62,6 @@ export default function useApplicationData() {
         {interview})
 
           .then((response) => {
-            // console.log(response)
             setState({
               ...state,
               appointments,
@@ -76,8 +74,6 @@ export default function useApplicationData() {
 
 
   const editInterview = function(id, interview) {
-    // const dayIndex = finder();
-    // const days = [...state.days];
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -86,18 +82,16 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    // days[dayIndex].spots-=1;
 
 
     return (axios.put(`/api/appointments/${id}`,
         {interview})
 
           .then((response) => {
-            // console.log(response)
             setState({
               ...state,
               appointments
-              // days
+
             });
           })
 
@@ -114,7 +108,6 @@ export default function useApplicationData() {
     ])
 
       .then((all) => {
-        // console.log('all', all)
         setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
     })
   }, [])
