@@ -4,6 +4,7 @@ import "components/DayListItem.scss";
 let classNames = require('classnames');
 
 export default function DayListItem(props) {
+  //renders the indivdual day and spots remaining in that day
   const formatSpots = (count) => {
     if (count <= 0) {
       return 'No spots left.'

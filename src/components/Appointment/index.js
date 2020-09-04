@@ -17,6 +17,7 @@ import Confirm from "components/Appointment/Confirm.js";
 
 import Error from "components/Appointment/Error.js";
 
+//various visual modes
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -29,6 +30,7 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
 
+  //save function stores the interview data and passes it to bookInterview function and transitions to Show visual mode
   const save = function (name, interviewer) {
     const interview = {
       student: name,
@@ -43,6 +45,7 @@ export default function Appointment(props) {
       }).catch(error => transition(ERROR_SAVE, true));
   };
 
+   //edit function stores the interview data and passes it to editInterview function and transitions to Show visual mode
   const edit = function (name, interviewer) {
     const interview = {
       student: name,
@@ -59,7 +62,7 @@ export default function Appointment(props) {
       }).catch(error => transition(ERROR_SAVE, true));
   };
 
-
+  //cancel function stores the interview data and passes it to cancelInterview function and transitions to Empty visual mode
   const cancel = function () {
     transition(DELETING, true);
     props
@@ -77,6 +80,7 @@ export default function Appointment(props) {
     <main>
       <Header time={props.time} />
       <article className="appointment" data-testid="appointment">Appointment</article>
+      {/* various visual modes rendered below */}
       {mode === CONFIRM && (
         <Confirm
           message="Please confirm you would like to delete"

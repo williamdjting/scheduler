@@ -17,7 +17,7 @@ import useApplicationData from "hooks/useApplicationData.js"
 
 
 export default function Application(props) {
-
+  //the various states that are stored - taken from useApplicationData function
   const {
     state,
     setDay,
@@ -28,13 +28,16 @@ export default function Application(props) {
 
 
   const appointmentObjects = getAppointmentsForDay(state, state.day);
+  //uses getAppointmentsForDay function to hold state
 
   const interviewers = getInterviewersForDay(state, state.day);
+    //uses getInterviewersForDay function to hold state
 
   const schedule = appointmentObjects.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
 
     return (
+      //passes relevant api data to the appointment for rendering
       <Appointment
       key={appointment.id}
       id={appointment.id}

@@ -11,10 +11,14 @@ export default function Form(props) {
   //   setName("");
   //   setInterviewer(null);
   // };
+  //keeping this reset function in case I need it
+
+  //calls the onCancel function
   const cancel = () => {
-    console.log("cancel form", props)
+    // console.log("cancel form", props) - keeping for testing
     props.onCancel();
   };
+  //valides if the name or interviewer field are entered
   const validate = () => {
     if (!name) {
       setError("Student name cannot be blank");

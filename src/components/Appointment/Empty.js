@@ -1,8 +1,7 @@
 import React from "react";
 
 export default function Empty(props) {
-
-
+  //removes the existing component state
   return (
     <main className="appointment__add">
       <img

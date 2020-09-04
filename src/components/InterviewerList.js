@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 let classNames = require('classnames');
 
 export default function InterviewerList(props) {
+  //renders the interviewer that is chosen
   const interviewers = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem
